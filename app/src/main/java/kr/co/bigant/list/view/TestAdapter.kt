@@ -10,8 +10,8 @@ import kr.co.bigant.list.databinding.TestListItemBinding
 import kr.co.bigant.list.view.base.BaseAdapter
 
 
-class TestAdapter(diffUtil: DiffUtil.ItemCallback<Any>) :
-    BaseAdapter(diffUtil) {
+class TestAdapter(diffUtil: DiffUtil.ItemCallback<String>) :
+    BaseAdapter<String>(diffUtil) {
     //베이스 어뎁터로 만들기 숙제!
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         binding = TestListItemBinding.inflate(LayoutInflater.from(parent.context))
@@ -20,7 +20,7 @@ class TestAdapter(diffUtil: DiffUtil.ItemCallback<Any>) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is TestViewHolder) {
-            holder.onBind(getItem(position))
+            holder.onBind(getItem(position).toString())
         }
     }
 

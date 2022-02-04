@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-
-abstract class BaseAdapter(diffUtil: DiffUtil.ItemCallback<Any>) :
-    ListAdapter<Any, RecyclerView.ViewHolder>(diffUtil) {
+abstract class BaseAdapter<T>(
+    diffCallback: DiffUtil.ItemCallback<T>
+) : ListAdapter<T, RecyclerView.ViewHolder>(diffCallback) {
     protected lateinit var binding: ViewDataBinding
     override fun getItemCount(): Int {
         return super.getItemCount()

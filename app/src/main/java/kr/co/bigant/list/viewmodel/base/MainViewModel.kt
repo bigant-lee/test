@@ -12,4 +12,7 @@ class MainViewModel : ViewModel() {
     fun getData() {
         _itemList.value = listOf("A", "B", "C", "D")
     }
+    fun addData() {
+        _itemList.value = listOf("A", "B", "C", "D","F")
+    }
 }

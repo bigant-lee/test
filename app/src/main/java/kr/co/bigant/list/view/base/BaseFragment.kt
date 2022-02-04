@@ -18,7 +18,9 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+        binding = DataBindingUtil.inflate<VDB>(inflater, layoutRes, container, false).apply {
+            lifecycleOwner = this@BaseFragment
+        }
         return binding.root
     }
 }

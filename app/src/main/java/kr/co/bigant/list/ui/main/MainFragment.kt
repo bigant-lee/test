@@ -1,4 +1,4 @@
-package kr.co.bigant.list.view
+package kr.co.bigant.list.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import kr.co.bigant.list.R
 import kr.co.bigant.list.databinding.FragmentMainBinding
-import kr.co.bigant.list.view.base.BaseFragment
+import kr.co.bigant.list.base.BaseFragment
 
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     override fun onCreateView(

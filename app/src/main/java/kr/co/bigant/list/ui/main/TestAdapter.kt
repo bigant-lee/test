@@ -1,13 +1,11 @@
-package kr.co.bigant.list.view
+package kr.co.bigant.list.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kr.co.bigant.list.databinding.TestListItemBinding
-import kr.co.bigant.list.view.base.BaseAdapter
+import kr.co.bigant.list.base.BaseAdapter
 
 
 class TestAdapter(diffUtil: DiffUtil.ItemCallback<String>) :

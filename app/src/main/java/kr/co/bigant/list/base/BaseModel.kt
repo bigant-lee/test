@@ -1,4 +1,4 @@
-package kr.co.bigant.list.model
+package kr.co.bigant.list.base
 
 data class BaseModel(
     val title:String

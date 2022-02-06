@@ -1,4 +1,4 @@
-package kr.co.bigant.list.view.base
+package kr.co.bigant.list.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

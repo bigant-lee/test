@@ -1,7 +1,6 @@
-package kr.co.bigant.list.view.base
+package kr.co.bigant.list.base
 
 
-import androidx.annotation.LayoutRes
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter

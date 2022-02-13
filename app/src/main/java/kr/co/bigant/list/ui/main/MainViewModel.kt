@@ -8,30 +8,37 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kr.co.bigant.list.db.AppDatabase
 import kr.co.bigant.list.db.dao.UserDao
+import kr.co.bigant.list.entity.User
+import kr.co.bigant.list.repository.TestRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val userDao: UserDao
 ) : ViewModel() {
-    private val _itemList = MutableLiveData<List<String>>(emptyList()) //변할수 있음
-    val itemList: LiveData<List<String>> get() = _itemList
-
+    private val _itemList = MutableLiveData<List<User>>(emptyList()) //변할수 있음
+    val itemList: LiveData<List<User>> get() = _itemList
+    private lateinit var testRepository: TestRepository
 
     fun getData() {
-        userDao.getAll()
-        _itemList.value = listOf("A", "B", "C", "D")
+        viewModelScope.launch {
+            testRepository.getList { itemList ->
+                launch {
+                    _itemList.value = itemList as List<User>
+                }
+            }
+        }
     }
 
     fun addData() {
         val list = itemList.value?.toMutableList() ?: mutableListOf()
-        list.add("F")
-        _itemList.value = list
+//        list.add("김호영")
+//        _itemList.value = list
     }
 
     fun deleteData() {
-        val list = itemList.value?.toMutableList() ?: mutableListOf()
-        list.removeLast()
-        _itemList.value = list
+        viewModelScope.launch {
+
+        }
     }
 }

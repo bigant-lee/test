@@ -9,9 +9,9 @@ import kr.co.bigant.list.entity.User
 class TestRepository(
     private val dao: UserDao
 ) {
-    suspend fun insert(entity: User) {
+    suspend fun insert(vararg entity: User) {
         withContext(Dispatchers.IO) {
-            dao.insertAll(entity)
+            dao.insertAll(*entity)
         }
     }
     suspend fun getList(callback: (LiveData<List<User>>) -> Unit) {

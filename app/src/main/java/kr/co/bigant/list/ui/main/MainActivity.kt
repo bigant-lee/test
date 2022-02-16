@@ -1,11 +1,15 @@
 package kr.co.bigant.list.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import kr.co.bigant.list.R
 import kr.co.bigant.list.databinding.ActivityMainBinding
 import kr.co.bigant.list.base.BaseActivity
@@ -16,11 +20,15 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-    @Inject lateinit var userDao: UserDao
+    @Inject
+    lateinit var userDao: UserDao
     private val mainViewModel by viewModels<MainViewModel>()
-    private lateinit var testRepository: TestRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycleScope.launch {
+
+        }
         binding.vm = mainViewModel
         val diffUtil = object : DiffUtil.ItemCallback<User>() {
             override fun areItemsTheSame(
@@ -39,7 +47,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = testAdapter
-        testRepository = TestRepository.getInstance(userDao)
         mainViewModel.getData()
 
     }

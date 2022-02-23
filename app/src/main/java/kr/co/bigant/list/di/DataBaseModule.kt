@@ -8,6 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kr.co.bigant.list.db.AppDatabase
 import kr.co.bigant.list.db.dao.UserDao
+import kr.co.bigant.list.repository.TestRepository
 import javax.inject.Singleton
 
 @Module
@@ -16,12 +17,18 @@ object DataBaseModule {
     @Singleton
     @Provides
     fun provideAppDataBase(
-        @ApplicationContext context : Context
-    ):AppDatabase = AppDatabase.buildDatabase(context)
+        @ApplicationContext context: Context
+    ): AppDatabase = AppDatabase.buildDatabase(context)
+
     @Singleton
     @Provides
     fun provideUserDao(
         database: AppDatabase
-    ):UserDao = database.userDao()
+    ): UserDao = database.userDao()
 
+    @Singleton
+    @Provides
+    fun testRepositoryDataBase(
+        userDao: UserDao
+    ): TestRepository = TestRepository.getInstance(userDao)
 }
